@@ -27,7 +27,7 @@ import android.widget.TextView;
 import com.shehabsalah.movieappmvp.R;
 import com.shehabsalah.movieappmvp.data.Movie;
 import com.shehabsalah.movieappmvp.util.Constants;
-import com.squareup.picasso.Picasso;
+import com.shehabsalah.movieappmvp.util.PicassoHandler;
 import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -96,7 +96,7 @@ public class MoviesListAdapter extends RecyclerView.Adapter<MoviesListAdapter.My
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Movie movie = movies.get(position);
-        Picasso.with(context)
+        PicassoHandler.getInstance(context).getPicasso()
                 .load(Constants.IMAGE_URL + movie.getPosterPath())
                 .placeholder(R.drawable.placeholder_background)
                 .error(R.drawable.placeholder_background)

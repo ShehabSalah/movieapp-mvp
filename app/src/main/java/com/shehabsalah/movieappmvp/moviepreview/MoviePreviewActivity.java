@@ -24,8 +24,8 @@ import android.widget.TextView;
 import com.shehabsalah.movieappmvp.R;
 import com.shehabsalah.movieappmvp.data.Movie;
 import com.shehabsalah.movieappmvp.util.Constants;
+import com.shehabsalah.movieappmvp.util.PicassoHandler;
 import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -73,7 +73,7 @@ public class MoviePreviewActivity extends AppCompatActivity implements MoviePrev
             favoriteText.setText(getString(R.string.add_favorite));
 
         if (intent.hasExtra(Constants.KEY_CONNECTION_IMAGE))
-            Picasso.with(this)
+            PicassoHandler.getInstance(this).getPicasso()
                     .load(extras.getString(Constants.KEY_CONNECTION_IMAGE))
                     .placeholder(R.drawable.placeholder_background)
                     .error(R.drawable.placeholder_background)
@@ -89,7 +89,7 @@ public class MoviePreviewActivity extends AppCompatActivity implements MoviePrev
                         }
                     });
         else
-            Picasso.with(this)
+            PicassoHandler.getInstance(this).getPicasso()
                     .load(Constants.IMAGE_URL + movie.getPosterPath())
                     .placeholder(R.drawable.placeholder_background)
                     .error(R.drawable.placeholder_background)
